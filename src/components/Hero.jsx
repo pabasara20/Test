@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     // 🎨 Key Change: Reduced md:pt-32 to md:pt-16 (or md:pt-24 for slightly more space)
     // The pt-6 and pb-12 keep it suitable for mobile devices.
-    <section className="pt-0 pb-0 md:pt-24 md:pb-32">
+    <section className="pt-32 pb-0 md:pt-24 md:pb-32">
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center px-4">
         {/* Profile image */}
         <div className="rounded-full w-48 h-48 md:w-56 md:h-56 flex items-center justify-center border-8 border-white shadow-lg overflow-hidden mb-4 md:mb-0">
@@ -36,7 +36,7 @@ export default function Hero() {
         </p>
 
         {/* Main heading */}
-        <h1 className="text-4xl md:text-5xl font-[550] leading-tight">
+        <h1 className="text-3xl md:text-5xl font-[550] leading-tight">
           I craft digital products
           <br />
           and experiences!
