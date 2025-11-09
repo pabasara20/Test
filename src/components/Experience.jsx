@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo1 from '../Assets/Logo1.png'
-import Logo2 from '../Assets/Logo2.png'
+import Logo2 from '../Assets/logo2.png'
 import Logo3 from '../Assets/Logo3.png'
 import Logo4 from '../Assets/Logo4.png'
 import Logo5 from '../Assets/Logo5.png'
