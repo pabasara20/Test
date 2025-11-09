@@ -4,10 +4,10 @@ import profileImage from '../Assets/Me.jpeg'
 export default function Contact() {
     return (
         <section className="relative w-full min-h-screen bg-white text-black py-20 md:py-24">
-            <div className="max-w-4xl mx-auto mt-10 px-4">
+            <div className="max-w-4xl mx-auto mt-10 px-12">
                 {/* Main Heading */}
                 <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-[550] leading-tight">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-[550] leading-tight">
                         Thanks for exploring my portfolio!
                     </h2>
                 </div>
@@ -27,7 +27,7 @@ export default function Contact() {
                     <div className="flex items-start gap-4">
                         {/* Profile Image */}
                         <div className="flex-shrink-0">
-                            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-green-400">
+                            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-black-400">
                                 <img
                                     src={profileImage}
                                     alt="Pabasara Ranasinghe"
@@ -39,7 +39,7 @@ export default function Contact() {
                         {/* Message Bubble */}
                         <div className="bg-black text-white px-6 py-4 rounded-3xl rounded-tl-md max-w-2xl">
                             <p className="text-lg md:text-xl font-[400]">
-                                Hey! You can email me at{' '}
+                                Hey! You can email me {' '}
                                 <a
                                     href="mailto:pabasara@gmail.com"
                                     className="underline text-white hover:text-gray-300 transition-colors"

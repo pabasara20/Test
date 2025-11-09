@@ -32,7 +32,7 @@ export default function About() {
     });
 
     return (
-        <section className="py-10 md:py-4 flex items-center justify-center">
+        <section className="py-4 md:py-4 flex items-center justify-center">
             <div className="max-w-5xl mx-auto px-6 w-full">
 
                 {/* Main Profile Section - Horizontal Layout */}

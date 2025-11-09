@@ -28,7 +28,7 @@ export default function App() {
             { id: 'about-me', name: 'About me' },
             { id: 'works', name: 'Works' },
             { id: 'visual-delight', name: 'Visual Delight' },
-            { id: 'experience', name: 'Experience' },
+            { id: 'experience', name: 'Volunteering' },
             { id: 'contact', name: 'Contact' }
         ]
 
@@ -114,7 +114,7 @@ export default function App() {
                     </section>
 
                     {/* Experience Section */}
-                    <section id="experience" className="min-h-screen">
+                    <section id="volunteering" className="min-h-screen">
                         <Experience />
                     </section>
 

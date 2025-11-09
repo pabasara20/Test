@@ -15,8 +15,8 @@ export default function Experience() {
       company: 'GeekZone v1.0 - IEEE Student Branch of SUSL',
       duration: '',
       logo: Logo1,
-      width: '300px', // Desktop Size
-      mobileWidth: '150px', // Mobile Size (e.g., 50px)
+      width: '300px',
+      mobileWidth: '150px',
       height: 'auto'
     },
     {
@@ -25,8 +25,8 @@ export default function Experience() {
       company: 'Faculty of Computing, SUSL',
       duration: '',
       logo: Logo2,
-      width: '160px', // Desktop Size
-      mobileWidth: '60px', // Mobile Size (e.g., 40px)
+      width: '160px',
+      mobileWidth: '60px',
       height: 'auto'
     },
     {
@@ -35,8 +35,8 @@ export default function Experience() {
       company: 'Society of Computer Sciences, SUSL',
       duration: '',
       logo: Logo3,
-      width: '100px', // Desktop Size
-      mobileWidth: '50px', // Mobile Size (e.g., 35px)
+      width: '100px',
+      mobileWidth: '50px',
       height: 'auto'
     },
     {
@@ -45,8 +45,8 @@ export default function Experience() {
       company: 'PathForward 2025 - IEEE WIE Student Branch Affinity Group of SUSL',
       duration: '',
       logo: Logo4,
-      width: '200px', // Desktop Size
-      mobileWidth: '95px', // Mobile Size (e.g., 45px)
+      width: '200px',
+      mobileWidth: '95px',
       height: 'auto'
     },
     {
@@ -55,8 +55,8 @@ export default function Experience() {
       company: 'PearlHack 3.0 - IEEE WIE Student Branch Affinity Group of SUSL',
       duration: '',
       logo: Logo5,
-      width: '200px', // Desktop Size
-      mobileWidth: '95px', // Mobile Size (e.g., 45px)
+      width: '200px',
+      mobileWidth: '95px',
       height: 'auto'
     },
     {
@@ -65,8 +65,8 @@ export default function Experience() {
       company: 'International Conference on Advanced Research in Computing 2025',
       duration: '',
       logo: Logo6,
-      width: '200px', // Desktop Size
-      mobileWidth: '95px', // Mobile Size (e.g., 25px)
+      width: '200px',
+      mobileWidth: '95px',
       height: 'auto'
     },
     {
@@ -75,15 +75,15 @@ export default function Experience() {
       company: '2024 November - IEEE Student Branch of SUSL',
       duration: '',
       logo: Logo7,
-      width: '65px', // Desktop Size
-      mobileWidth: '30px', // Mobile Size (e.g., 30px)
+      width: '65px',
+      mobileWidth: '30px',
       height: 'auto'
     },
   ]
 
   return (
-    <section className="w-full py-8 md:py-16 bg-white">
-      <div className="max-w-5xl mx-auto px-4 md:px-6">
+    <section className="w-full py-8 px-4 md:py-16  bg-white">
+      <div className="max-w-5xl mx-auto px-8 md:px-0">
         <h2 className="text-3xl md:text-5xl font-medium text-center mt-8 mb-16">
           Volunteering
         </h2>
@@ -92,38 +92,38 @@ export default function Experience() {
           {workHistory.map((job) => (
             <div
               key={job.id}
-              className="flex flex-col md:flex-row md:items-center justify-between py-5 transition-colors duration-200 rounded-xl px-0 md:px-4 group"
+              className="flex flex-col md:flex-row md:items-center justify-between py-5 transition-colors duration-200 rounded-xl px-4 md:px-0 group"
             >
-              {/* Left: Text & Mobile Logo Wrapper */}
-              <div className="flex-1 min-w-0 flex flex-col justify-center">
+              {/* Inner wrapper for centering content on mobile */}
+              <div className="flex-1 min-w-0 flex flex-col justify-center items-center md:items-start text-center md:text-left">
                 <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">
                   {job.position}
                 </h3>
                 <p className="text-sm text-gray-700">{job.company}</p>
                 {job.duration && <p className="text-xs text-gray-500">{job.duration}</p>}
 
-                {/* 👇 Mobile Logo (Shown on mobile, Hidden on desktop) */}
+                {/* Mobile Logo */}
                 <div className="flex md:hidden mt-3">
                   <img
                     src={job.logo}
                     alt={`${job.company} logo`}
                     className="object-contain"
                     style={{
-                      width: job.mobileWidth, // 👈 Uses the specific mobile size
+                      width: job.mobileWidth,
                       height: 'auto',
                     }}
                   />
                 </div>
               </div>
 
-              {/* Right: Large Logo (Hidden on mobile, Shown on desktop) */}
+              {/* Desktop Logo */}
               <div className="hidden md:flex ml-4 items-center">
                 <img
                   src={job.logo}
                   alt={`${job.company} logo`}
                   className="object-contain"
                   style={{
-                    width: job.width, // 👈 Uses the specific desktop size
+                    width: job.width,
                     height: job.height,
                   }}
                 />

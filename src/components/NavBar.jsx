@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 export default function NavBar({ currentSection = 'About me', scrollToSection }) {
-  const items = ['About me', 'Works', 'Visual Delight', 'Experience', 'Contact']
+  const items = ['About me', 'Works', 'Visual Delight', 'Volunteering', 'Contact']
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState(currentSection)
   const containerRef = useRef(null)
