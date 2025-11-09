@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enable smooth scrolling and prevent over-scroll */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Prevent scroll above the top */
+html,
+body {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+}
+
+/* Sticky card scroll effect */
+.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    /* Safari support */
+}
+
+/* small custom rules to better match the layout */
+body {
+    @apply bg-white;
+    font-family: 'Borna', sans-serif;
+    /* Fixed top padding for navbar */
+    padding-top: 70px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+}
+
+/* Glass morphism header */
+.glass-header {
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* nav specific tweaks */
+.nav-container {
+    /* tighter pill: reduce horizontal and vertical padding, softer shadow */
+    @apply bg-white rounded-full px-2 py-1 shadow-md;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 400px;
+}
+
+/* Tech Stack Sliding Animation */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-slide {
+    animation: slide 20s linear infinite;
+}
+
+/* Design Tools Reverse Sliding Animation */
+@keyframes slide-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-reverse {
+    animation: slide-reverse 20s linear infinite;
+}
+
+/* Sliding navigation items */
+.nav-item-sliding {
+    @apply text-gray-600 px-4 py-2 rounded-full text-center;
+    transition: color 0.7s ease-out;
+    position: relative;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.nav-item-sliding:hover {
+    @apply text-gray-800;
+}
+
+.nav-item-sliding.nav-item-active {
+    @apply text-white;
+    transition: color 0.7s ease-out;
+}
+
+/* Sliding background indicator */
+.nav-slider {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+/* Legacy nav items - keeping for mobile menu */
+.nav-item {
+    /* smaller click targets while keeping rounded look with smooth animations */
+    @apply text-gray-600 px-4 py-1 rounded-full;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transform: scale(1);
+}
+
+.nav-item:hover {
+    @apply text-black bg-gray-50;
+    transform: scale(1.05);
+}
+
+.nav-active {
+    /* active item with smooth animation */
+    @apply bg-black text-white px-4 py-1 rounded-full;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* small gradient pill used behind the "Hi I'm Pabasara" text */
+.name-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    color: #1f2937;
+    /* tailwind text-gray-800 */
+    background: linear-gradient(90deg, #fbfbfb 0%, #f3f1f7 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .name-pill {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .name-pill {
+        padding: 0.75rem 1.75rem;
+        font-size: 1.125rem;
+    }
+}
+
+/* Scrolling animation for Visual Delight carousel */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 20s linear infinite;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
+/* Example Keyframes and utility for Tailwind CSS */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Translate the width of one set of images (half the total width) */
+        /* Adjust this value based on the total width of your un-duplicated cards and gaps */
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+.animate-scroll {
+    animation: scroll 30s linear infinite;
+    /* Adjust duration as needed */
+    width: max-content;
+    /* Ensure the flex container takes up the total width */
+}
+
+/* Dedicated slower animations for Visual Design rows so UI speed remains unchanged */
+.animate-visual-slow {
+    animation: scroll 200s linear infinite;
+    width: max-content;
+}
+
+.animate-visual-slow-reverse {
+    animation: slide-reverse 200s linear infinite;
+    width: max-content;
+}
