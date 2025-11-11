@@ -5,7 +5,6 @@ This is a small React + Vite + Tailwind project that reproduces the provided lan
 Quick start (PowerShell on Windows):
 
 ```powershell
-cd react-portfolio
 npm install
 npm run dev
 ```
