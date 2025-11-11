@@ -59,7 +59,6 @@ export default function Works() {
             image: W1,
             links: {
                 github: "https://github.com/fixpoint-tech",
-                linkedin: "https://www.linkedin.com/in/kavindalj/", 
                 figma: "https://www.figma.com/design/QFGGxzzJ8PwhpvF7MuzfNE/FixPoint---Smart-Mobile-Ticketing-Platform-for-Domino%E2%80%99s-Sri-Lanka-Maintenance-Operations?node-id=0-1&t=M4UWTA9Dthk5PwAg-1"
             }
         },
@@ -72,7 +71,7 @@ export default function Works() {
             image: W2,
             links: {
                 github: "https://github.com/kavindalj/CircadiaLux",
-                linkedin: "https://www.linkedin.com/in/kavindalj/", 
+                linkedin: "https://www.linkedin.com/posts/20pabasara_circadialux-capstoneproject-iotinnovation-activity-7356328715083001856-1xs5?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAADPKiYUBA3j1FHMQiWKBqfnM7zuXkhTf8DQ&utm_campaign=copy_link", 
             }
         },
         {
@@ -84,7 +83,7 @@ export default function Works() {
             image: W3,
             links: {
                 github: "https://github.com/KavinduAluthwaththa/ReportEase",
-                linkedin: "https://www.linkedin.com/in/kavindalj/", 
+                linkedin: "https://www.linkedin.com/posts/mariyeta-rodrigo-38a49b299_laravel-webdevelopment-softwareengineering-activity-7387411365046460416-nakH?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAADPKiYUBA3j1FHMQiWKBqfnM7zuXkhTf8DQ&utm_campaign=copy_link", 
             }
         },
         {
@@ -97,6 +96,7 @@ export default function Works() {
             links: {
                 figma: "https://www.figma.com/design/QFGGxzzJ8PwhpvF7MuzfNE/FixPoint---Smart-Mobile-Ticketing-Platform-for-Domino%E2%80%99s-Sri-Lanka-Maintenance-Operations?node-id=0-1&t=M4UWTA9Dthk5PwAg-1",
                 behance: "https://www.behance.net/gallery/237866943/Budgetly-Smart-Expense-Tracker-Case-Study",
+                linkedin: "https://www.linkedin.com"
             }
         }
     ];
