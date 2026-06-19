@@ -10,6 +10,7 @@ import GithubIconPng from '../Assets/Github.png';
 import LinkedinIconPng from '../Assets/Linkedin.png';
 import FigmaIconPng from '../Assets/Figma.png';
 import BehanceIconPng from '../Assets/Behance.png';
+import InfinityLogo from '../Assets/Infinity logo.jpg';
 
 // --- (Tech Stack Color Mapping Function) ---
 const getTechColor = (techName) => {
@@ -41,6 +42,12 @@ const getTechColor = (techName) => {
     if (lowerCaseName.includes('css')) return 'text-blue-900';
     if (lowerCaseName.includes('scikit-learn')) return 'text-orange-600';
     if (lowerCaseName.includes('arduino') || lowerCaseName.includes('esp32')) return 'text-teal-500';
+    if (lowerCaseName.includes('python')) return 'text-yellow-600';
+    if (lowerCaseName.includes('azure')) return 'text-blue-600';
+    if (lowerCaseName.includes('git') || lowerCaseName.includes('github')) return 'text-orange-600';
+    if (lowerCaseName.includes('api')) return 'text-emerald-500';
+    if (lowerCaseName.includes('make')) return 'text-purple-500';
+    if (lowerCaseName.includes('clickup')) return 'text-pink-500';
     
     // Default color for unmatched technologies
     return 'text-gray-500'; 
@@ -112,7 +119,60 @@ export default function Works() {
         <section className="relative w-full py-16 md:py-24">
             <div className="max-w-5xl mx-auto px-6">
 
-                {/* 🔹 Section Header */}
+                {/* 🔹 Work Experience Section */}
+                <div className="mb-20">
+                    <h2 className="text-3xl md:text-4xl font-semibold leading-tight text-gray-800 text-center mb-8">
+                        Work Experience
+                    </h2>
+                    
+                    {/* Experience Section */}
+                    <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                        {/* Company Logo */}
+                        <div className="w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 flex items-center justify-center">
+                            <img src={InfinityLogo} alt="Infinity Innovators Logo" className="w-full h-full object-contain mix-blend-multiply" />
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="flex-grow w-full text-center sm:text-left mt-2">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                                <div>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Infinity Innovators Pvt Ltd</h3>
+                                    <p className="text-base text-gray-600 font-medium mt-1">UI/UX and Frontend developer intern <span className="mx-2 text-gray-400">•</span> Dec 2025 - Jul 2026</p>
+                                </div>
+                            </div>
+                            
+                            {/* Skills Stack */}
+                            <div className="text-sm font-normal leading-tight flex flex-wrap justify-center sm:justify-start items-center mt-3 mb-3 gap-y-2">
+                                <span className="text-gray-400 font-normal mr-2">Stack:</span>
+                                {["React", "API Integration", "Python", "Git", "Azure", "Figma", "ClickUp", "Figma Make"].map((tech, index, arr) => (
+                                    <React.Fragment key={tech}>
+                                        <span className={getTechColor(tech) + " font-medium"}>
+                                            {tech}
+                                        </span>
+                                        {index < arr.length - 1 && (
+                                            <span className="text-gray-300 mx-[0.4rem]">,</span>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                            
+                            {/* Links */}
+                            <div className="flex justify-center sm:justify-start pt-2">
+                                <a
+                                    href="https://www.linkedin.com/company/infinity-innovators/posts/?feedView=all"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-9 h-9 flex items-center justify-center transition-transform hover:scale-110 hover:opacity-80"
+                                    title="View on LinkedIn"
+                                >
+                                    <img src={LinkedinIconPng} alt="LinkedIn" className="w-6 h-6"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 🔹 Section Header for Projects */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-semibold leading-tight text-gray-800">
                         My Projects

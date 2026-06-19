@@ -6,9 +6,20 @@ import Logo4 from '../Assets/Logo4.png'
 import Logo5 from '../Assets/Logo5.png'
 import Logo6 from '../Assets/Logo6.png'
 import Logo7 from '../Assets/Logo7.png'
+import LumetrixBlack from '../Assets/black.png'
 
 export default function Experience() {
   const workHistory = [
+    {
+      id: 0,
+      position: 'President',
+      company: 'Lumetrix Media - Official Media Crew of Faculty of Computing, SUSL',
+      duration: '2025 - 2026',
+      logo: LumetrixBlack,
+      width: '140px',
+      mobileWidth: '70px',
+      height: 'auto'
+    },
     {
       id: 1,
       position: 'Design Team Leader',
@@ -85,7 +96,7 @@ export default function Experience() {
     <section className="w-full py-8 px-4 md:py-16  bg-white">
       <div className="max-w-5xl mx-auto px-8 md:px-0">
         <h2 className="text-3xl md:text-5xl font-medium text-center mt-8 mb-16">
-          Volunteering
+          Positions of Responsibility
         </h2>
 
         <div className="flex flex-col divide-y divide-gray-100">

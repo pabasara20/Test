@@ -28,7 +28,7 @@ export default function About() {
         deleteSpeed: 50, // Speed of erasing
 
         // A 1-second delay between words (after typing and before deleting).
-        delaySpeed: 1000, 
+        delaySpeed: 1000,
     });
 
     return (
@@ -66,7 +66,7 @@ export default function About() {
                                 </h2>
 
                                 <p className="text-md md:text-md text-gray-600 leading-relaxed">
-                                    Hi, I'm Pabasara! A UI/UX and frontend enthusiast, studying Computing and Information Systems at <span className="font-[600] text-black">Sabaragamuwa University of Sri Lanka</span>, and a proud <span className="font-[600] text-black">Maliyadeva College </span>alumnus.
+                                    Hi, I'm Pabasara! A Frontend Developer and UI/UX Designer passionate about building intuitive digital experiences. Currently pursuing a degree in Computing and Information Systems at Sabaragamuwa University of Sri Lanka
                                 </p>
 
                                 {/* School Logos */}

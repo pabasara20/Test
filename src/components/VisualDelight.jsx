@@ -1,44 +1,137 @@
-import React from 'react'
-// REMOVED: import Budgetly1 from '../Assets/Budgetly1.png'
-// REMOVED: import Budgetly2 from '../Assets/Budgetly2.png'
-// REMOVED: import Budgetly3 from '../Assets/Budgetly3.png'
-// REMOVED: import Budgetly4 from '../Assets/Budgetly4.png'
-import Me from '../Assets/Me.jpeg' // Kept this if it's used elsewhere, though not in the snippet below
+import React, { useRef, useEffect, useState } from 'react'
+
+const AutoDragCarousel = ({ items, imageMaxHeight, speed = 1, direction = 'left', gap = 24 }) => {
+    const containerRef = useRef(null);
+    const firstSetRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const startX = useRef(0);
+    const scrollLeftStart = useRef(0);
+    const rafId = useRef(null);
+
+    useEffect(() => {
+        if (direction === 'right' && containerRef.current && firstSetRef.current) {
+            containerRef.current.scrollLeft = firstSetRef.current.offsetWidth + gap;
+        }
+    }, [direction, gap]);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        const firstSet = firstSetRef.current;
+        if (!container || !firstSet) return;
+
+        const scrollStep = () => {
+            if (!isDragging && !isHovered) {
+                const loopPoint = firstSet.offsetWidth + gap;
+                
+                if (direction === 'left') {
+                    container.scrollLeft += speed;
+                    if (container.scrollLeft >= loopPoint) {
+                        container.scrollLeft -= loopPoint;
+                    }
+                } else {
+                    container.scrollLeft -= speed;
+                    if (container.scrollLeft <= 0) {
+                        container.scrollLeft += loopPoint;
+                    }
+                }
+            }
+            rafId.current = requestAnimationFrame(scrollStep);
+        };
+
+        rafId.current = requestAnimationFrame(scrollStep);
+        return () => cancelAnimationFrame(rafId.current);
+    }, [isDragging, isHovered, speed, direction, gap]);
+
+    const onPointerDown = (e) => {
+        setIsDragging(true);
+        startX.current = e.pageX || (e.touches && e.touches[0].pageX);
+        scrollLeftStart.current = containerRef.current.scrollLeft;
+    };
+
+    const onPointerMove = (e) => {
+        if (!isDragging) return;
+        const x = e.pageX || (e.touches && e.touches[0].pageX);
+        if (!x) return;
+        
+        const walk = (startX.current - x) * 1.5;
+        let newScrollLeft = scrollLeftStart.current + walk;
+        const loopPoint = firstSetRef.current.offsetWidth + gap;
+        
+        if (newScrollLeft >= loopPoint) newScrollLeft -= loopPoint;
+        if (newScrollLeft <= 0) newScrollLeft += loopPoint;
+        
+        containerRef.current.scrollLeft = newScrollLeft;
+    };
+
+    const onPointerUpOrLeave = () => {
+        setIsDragging(false);
+    };
+
+    return (
+        <div
+            ref={containerRef}
+            className={`w-full overflow-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-${isDragging ? 'grabbing' : 'grab'}`}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUpOrLeave}
+            onPointerLeave={() => { setIsHovered(false); onPointerUpOrLeave(); }}
+            onMouseEnter={() => setIsHovered(true)}
+            onTouchStart={onPointerDown}
+            onTouchMove={onPointerMove}
+            onTouchEnd={onPointerUpOrLeave}
+            style={{ touchAction: 'pan-y' }}
+        >
+            <div className="flex w-max" style={{ gap: `${gap}px` }}>
+                <div ref={firstSetRef} className="flex" style={{ gap: `${gap}px` }}>
+                    {items.map((item, index) => (
+                        <div key={`set1-${item.id}-${index}`} className="flex-shrink-0">
+                            <img
+                                src={item.image}
+                                alt={item.alt}
+                                draggable={false}
+                                className="h-auto object-contain rounded-2xl transition-transform duration-300 hover:scale-[1.02] select-none"
+                                style={{ width: 'auto', maxHeight: imageMaxHeight }}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+                <div className="flex" style={{ gap: `${gap}px` }}>
+                    {items.map((item, index) => (
+                        <div key={`set2-${item.id}-${index}`} className="flex-shrink-0">
+                            <img
+                                src={item.image}
+                                alt={item.alt}
+                                draggable={false}
+                                className="h-auto object-contain rounded-2xl transition-transform duration-300 hover:scale-[1.02] select-none"
+                                style={{ width: 'auto', maxHeight: imageMaxHeight }}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default function VisualDelight() {
 
-    // ✅ NEW BLOCK: Load ALL images for the UI/UX Showcase dynamically 
-    // from the specified folder. This replaces the Budgetly imports.
-    // Assuming the path relative to the current file is correct: 
-    // '../Assets/Showcase/*.{png,jpg,jpeg,svg}'
     const uiShowcaseModules = import.meta.glob('../Assets/Showcase/*.{png,jpg,jpeg,svg}', { eager: true })
     const visualDelightImages = Object.entries(uiShowcaseModules).map(([path, mod], idx) => ({
         id: idx + 1,
-        image: mod.default || mod, // Vite default export for assets
-        alt: path.split('/').pop() // Use filename as alt text
-    }))
-
-    // REMOVED: The old hardcoded visualDelightImages array
-    /* const visualDelightImages = [
-        { id: 1, image: Budgetly1, alt: "Budgetly Interface 1" },
-        { id: 2, image: Budgetly2, alt: "Budgetly Interface 2" },
-        { id: 3, image: Budgetly3, alt: "Budgetly Interface 3" },
-        { id: 4, image: Budgetly4, alt: "Budgetly Interface 4" }
-    ]
-    */
-
-    // ✅ Load ALL images from Assets/Graphic dynamically (png/jpg/jpeg/svg)
-    const graphicModules = import.meta.glob('../Assets/Graphic/*.{png,jpg,jpeg,svg}', { eager: true })
-    const graphicImages = Object.entries(graphicModules).map(([path, mod], idx) => ({
-        id: idx + 1,
-        image: mod.default || mod, // Vite default export for assets
+        image: mod.default || mod,
         alt: path.split('/').pop()
     }))
 
-    // Use the same set of images for both rows to keep widths identical
-    const repeatedVisual = [...graphicImages, ...graphicImages]
+    const graphicModules = import.meta.glob('../Assets/Graphic/*.{png,jpg,jpeg,svg}', { eager: true })
+    const graphicImages = Object.entries(graphicModules).map(([path, mod], idx) => ({
+        id: idx + 1,
+        image: mod.default || mod,
+        alt: path.split('/').pop()
+    }))
 
-    // Slightly smaller thumbnails than UI carousel
     const imageMaxHeight = '220px'
 
     return (
@@ -57,26 +150,13 @@ export default function VisualDelight() {
                 </div>
 
                 {/* 🔹 Scrolling Carousel Container - UI Images */}
-                {/* Now uses dynamically loaded visualDelightImages */}
-                <div className="relative overflow-hidden">
-                    <div className="flex gap-8 animate-scroll">
-                        {/* First set and Duplicate set for seamless loop */}
-                        {[...visualDelightImages, ...visualDelightImages].map((item, index) => (
-                            <div
-                                key={`ui-${item.id}-${index}`}
-                                className="flex-shrink-0"
-                            >
-                                <img
-                                    src={item.image}
-                                    alt={item.alt}
-                                    className="h-auto object-contain rounded-2xl transition-transform duration-900 hover:scale-101"
-                                    style={{ width: 'auto', maxHeight: imageMaxHeight }}
-                                    loading="lazy"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <AutoDragCarousel 
+                    items={visualDelightImages} 
+                    imageMaxHeight={imageMaxHeight} 
+                    speed={0.8} 
+                    direction="left" 
+                    gap={32} 
+                />
 
                 {/* --- */}
 
@@ -94,39 +174,23 @@ export default function VisualDelight() {
 
                     {/* 🔹 Two-row carousels with opposite scroll directions */}
                     <div className="space-y-6">
-                        {/* Row 1 - rightward (reverse) */}
-                        <div className="relative overflow-hidden">
-                            <div className="flex gap-6 animate-visual-slow-reverse">
-                                {repeatedVisual.map((item, index) => (
-                                    <div key={`visual-r1-${item.id}-${index}`} className="flex-shrink-0">
-                                        <img
-                                            src={item.image}
-                                            alt={item.alt}
-                                            className="h-auto object-contain rounded-2xl transition-transform duration-300 hover:scale-101"
-                                            style={{ width: 'auto', maxHeight: imageMaxHeight }}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        {/* Row 1 - rightward */}
+                        <AutoDragCarousel 
+                            items={graphicImages} 
+                            imageMaxHeight={imageMaxHeight} 
+                            speed={0.6} 
+                            direction="right" 
+                            gap={24} 
+                        />
 
                         {/* Row 2 - leftward */}
-                        <div className="relative overflow-hidden">
-                            <div className="flex gap-6 animate-visual-slow">
-                                {repeatedVisual.map((item, index) => (
-                                    <div key={`visual-r2-${item.id}-${index}`} className="flex-shrink-0">
-                                        <img
-                                            src={item.image}
-                                            alt={item.alt}
-                                            className="h-auto object-contain rounded-2xl transition-transform duration-300 hover:scale-101"
-                                            style={{ width: 'auto', maxHeight: imageMaxHeight }}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <AutoDragCarousel 
+                            items={graphicImages} 
+                            imageMaxHeight={imageMaxHeight} 
+                            speed={0.6} 
+                            direction="left" 
+                            gap={24} 
+                        />
                     </div>
                 </div>
             </div>

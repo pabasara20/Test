@@ -44,7 +44,7 @@ export default function Hero() {
 
         {/* Supporting paragraph */}
         <p className="mt-6 md:mt-7 text-gray-500 font-[400] text-base sm:text-lg md:text-s leading-relaxed max-w-2xl">
-          An <strong className="text-gray-800">Intern UI/UX Designer</strong> based
+          An <strong className="text-gray-800">Front-end Developer &UI/UX Designer</strong> based
           in <strong className="text-gray-800">Colombo</strong>, focused on crafting
           intuitive user experiences and transforming ideas into meaningful digital
           products.

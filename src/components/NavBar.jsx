@@ -54,7 +54,7 @@ export default function NavBar({ currentSection = 'About me', scrollToSection })
       <div className="flex items-center justify-between px-8 py-4 md:py-6 relative">
         {/* Left: Logo */}
         <div className="text-gray-800 font-semibold text-base md:text-lg tracking-tight">
-          Pabasara UX
+          Pabasara Ranasinghe
         </div>
 
         {/* Center: Desktop Navigation */}
@@ -85,11 +85,10 @@ export default function NavBar({ currentSection = 'About me', scrollToSection })
                   <button
                     ref={(el) => (buttonRefs.current[i] = el)}
                     onClick={() => handleNavClick(label)}
-                    className={`relative z-10 text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 ${
-                      label.toLowerCase() === activeSection.toLowerCase()
+                    className={`relative z-10 text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 ${label.toLowerCase() === activeSection.toLowerCase()
                         ? 'text-white'
                         : 'text-gray-700 hover:text-black'
-                    }`}
+                      }`}
                     style={{ whiteSpace: 'nowrap' }}
                   >
                     {label}
@@ -103,14 +102,14 @@ export default function NavBar({ currentSection = 'About me', scrollToSection })
         {/* Right: Resume + Mobile Toggle */}
         <div className="flex items-center space-x-4">
           {/* Resume Button - Desktop */}
-<a
-  href="https://drive.google.com/uc?export=download&id=1gWi5gSYdy0VeBHYEj5m-DMoIIbLIiOqy"
-  download
->
-  <button className="hidden md:block bg-[#EAC43F] text-black px-6 py-2 rounded-full font-medium text-sm hover:bg-[#d4ae36] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95">
-    Resume
-  </button>
-</a>
+          <a
+            href="https://drive.google.com/uc?export=download&id=1gWi5gSYdy0VeBHYEj5m-DMoIIbLIiOqy"
+            download
+          >
+            <button className="hidden md:block bg-[#EAC43F] text-black px-6 py-2 rounded-full font-medium text-sm hover:bg-[#d4ae36] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95">
+              Resume
+            </button>
+          </a>
 
           {/* Mobile Burger */}
           <button
@@ -119,19 +118,16 @@ export default function NavBar({ currentSection = 'About me', scrollToSection })
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-              }`}
+              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
+              className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''
+                }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-              }`}
+              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                }`}
             />
           </button>
         </div>
@@ -146,11 +142,10 @@ export default function NavBar({ currentSection = 'About me', scrollToSection })
                 <li key={label}>
                   <button
                     onClick={() => handleNavClick(label)}
-                    className={`w-full text-left px-5 py-3 rounded-xl font-medium tracking-wide transition-all duration-200 ${
-                      label.toLowerCase() === activeSection.toLowerCase()
+                    className={`w-full text-left px-5 py-3 rounded-xl font-medium tracking-wide transition-all duration-200 ${label.toLowerCase() === activeSection.toLowerCase()
                         ? 'bg-black text-white shadow-md'
                         : 'text-gray-700 hover:text-black hover:bg-gray-100'
-                    }`}
+                      }`}
                   >
                     {label}
                   </button>
